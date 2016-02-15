@@ -1,0 +1,28 @@
+<div id='container'>
+  <!-- Your html here -->
+  <!-- automatically call getlinks? -->
+  <h1> THE CANDIDATES </h1>
+  <div ng-app="PEA.links" ng-controller="LinksController">
+    <form name="candidateFilter">
+      <input type='text'ng-model='filteredName'>
+    </form>
+    <div ng-repeat="candidate in candidates | orderBy: '-visits' | filter:filteredName">
+      <div class='candidate'>
+      <a href='{{link.baseUrl}}{{link.code}}'/>
+      <img src='../assets/redirect_icon.png'/>
+          <div class='visits'><span class='count'>{{link.visits}}</span>Visits</div>
+          <div class='title'>{{link.title}}</div>
+          <div class='original'>{{link.url}}</div>
+          <div>{{link.base_url}}/{{link.code}}</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- <div class="link" ng-repeat="link in links track by $index"> <a href= "{{link.url}}"> {{link.url}} : {{link.code}} {{link.visits}} </div>
+  </div> -->
+</div>
+
+<!--
+<script id='link' type='text/x-handlebars-template'>
+
+</script> -->
