@@ -3,7 +3,7 @@
 // in our signup/signin forms using the injected Auth service
 angular.module('PEA.auth', [])
 
-.controller('AuthController', function ($scope, $window, $location, PEA.services, Auth) {
+.controller('AuthController', function ($scope, $window, $location, Auth) {
   $scope.user = {};
 
   $scope.signin = function () {

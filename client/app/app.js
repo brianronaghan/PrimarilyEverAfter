@@ -15,7 +15,7 @@ angular.module('PEA', [
       controller: 'AuthController'
     })
     .when('/candidates', {
-      templateUrl: 'app/candidates/allCandidates.html',
+      templateUrl: 'app/candidates/candidates.html',
       controller: 'CandidatesController'
     })
     //  .when('/notes', {
@@ -24,12 +24,15 @@ angular.module('PEA', [
     //   authenticate: true
     // })
     .when('/', {
-      templateUrl: 'app/auth/candidates.html',
+      templateUrl: 'app/candidates/candidates.html',
       controller: 'CandidatesController'
     })
     .when('/signout', {
       templateUrl: 'app/auth/signin.html',
       controller: 'AuthController'
+    })
+    .otherwise({
+      redirectTo: '/candidates'
     });
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
@@ -62,7 +65,7 @@ angular.module('PEA', [
   // if it's not valid, we then redirect back to signin/signup
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
     if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
-      $location.path('/signin');
+      $location.path('/candidates');
     }
   });
 });

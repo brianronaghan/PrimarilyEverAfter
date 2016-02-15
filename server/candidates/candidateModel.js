@@ -2,12 +2,13 @@ var mongoose = require('mongoose');
 // var crypto = require('crypto');
 
 var CandidateSchema = new mongoose.Schema({
- delegates: Number,
- link: String,
- name: String,
- twitter: String,
- money: Number,
- url: String
+  name: String,
+  image: String,
+  delegateCount: Number,
+  link: String,
+  twitter: String,
+  money: Number,
+  url: String
 });
 
 // var createSha = function (url) {

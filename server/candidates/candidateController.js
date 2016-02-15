@@ -1,4 +1,4 @@
-var Link = require('./CandidateModel.js');
+var Candidate = require('./CandidateModel.js');
     Q = require('q');
     util = require('../config/utils.js');
 
@@ -10,8 +10,9 @@ var findAllCandidates = Q.nbind(Candidate.find, Candidate);
 module.exports = {
 
   allCandidates: function (req, res, next) {
-  findAllCandidates({})
+    findAllCandidates({})
     .then(function (candidates) {
+      console.log("correct in all candidates get on server");
       res.json(candidates);
     })
     .fail(function (error) {
