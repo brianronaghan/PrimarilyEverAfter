@@ -18,11 +18,11 @@ angular.module('PEA', [
       templateUrl: 'app/candidates/allCandidates.html',
       controller: 'CandidatesController'
     })
-     .when('/notes', {
-      templateUrl: 'app/notes/notes.html',
-      controller: 'NotesController',
-      authenticate: true
-    })
+    //  .when('/notes', {
+    //   templateUrl: 'app/notes/notes.html',
+    //   controller: 'NotesController',
+    //   authenticate: true
+    // })
     .when('/', {
       templateUrl: 'app/auth/candidates.html',
       controller: 'CandidatesController'

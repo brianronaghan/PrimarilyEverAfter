@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Primarily Ever After</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <!-- <script src="lib/jquery/dist/jquery.js"></script> -->
+</head>
+<body>
+  <h2> PRIMARILY EVER AFTER </h2>
+  <h4> Your guide to the primaries. </h4>
+
+  <div class='navigation'>
+    <ul>
+      <li><a href='/#Democratss'>Dems Only</a></li>
+      <li><a href='/#Republicans'>Repubs Only</a></li>
+      <li ng-app="PEA.auth" ng-controller="AuthController" ng-click='signin()'><a href='/#signin'>Sign In</a></li>
+    </ul>
+    </div>
+    <div id="app"></div>
+    <div ng-view></div>
+    <div> SHOW THE APP</div>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="app/auth/auth.js"></script>
+    <script src="app/candidates/candidates.js"></script>
+    <!-- <script src="app/notes/notes.js"></script> -->
+    <script src="app/services/services.js"></script>
+    <script src="app/app.js"></script>
+
+
+</body>
+</html>
