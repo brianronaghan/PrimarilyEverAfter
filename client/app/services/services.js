@@ -43,24 +43,35 @@ angular.module('PEA.services', [])
   //     console.log("get scores e?", err);
   //   });
   // };
-  var gethuff = function () {
+  var updatehuff = function () {
     return $http({
       method: 'GET',
-      url: '/api/gethuff'
+      url: '/api/gethufffromhuff'
     })
     .then(function (resp) {
-      console.log("GET HUFF INFO ", resp);
+      return " i updated the DB from huffpo";
+    })
+    .catch(function (err) {
+      console.log("updateHUFF e?", err);
+    });
+  };
+  var getdbhuff = function () {
+    return $http({
+      method: 'GET',
+      url: '/api/dbhuff'
+    })
+    .then(function (resp) {
       return resp.data;
     })
     .catch(function (err) {
-      console.log("what's the real e?", err);
+      console.log("get huff e", err);
     });
   };
-
   return {
     addto: addto,
     // getScores: getScores,
-    gethuff:gethuff
+    updatehuff:updatehuff,
+    gethuff:getdbhuff
   };
 
 })

@@ -2,6 +2,7 @@ angular.module('PEA.candidates', [])
 
 .controller('CliCanController', function ($scope, $location, Candidates, GetData) {
   // Your code here
+  $scope.polls =[];
   $scope.candidates = ["foo","bar"];
   $scope.getscores = function () {
     GetData.getScores()
@@ -16,7 +17,8 @@ angular.module('PEA.candidates', [])
     // GetData.addto();
     $scope.getall();
     // $scope.getscores();
-    GetData.gethuff();
+    // GetData.updatehuff();
+    $scope.gethuff();
   }
   $scope.getall = function () {
     Candidates.getAll()
@@ -27,6 +29,16 @@ angular.module('PEA.candidates', [])
         console.error(error);
       });
   };
+  $scope.gethuff = function () {
+    GetData.gethuff()
+      .then(function (array) {
+        $scope.polls = array;
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  };
   init();
+
 
 });

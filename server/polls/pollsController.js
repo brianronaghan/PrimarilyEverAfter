@@ -14,12 +14,11 @@ var pollster = require('pollster');
 module.exports = {
   // get huff should only happen like once a night. JESUS.
   getHuffPo: function (req, res, next) {
-    console.log("in huffpo server side ");
     pollster.polls({topic: '2016-president-dem-primary'}, function(resp){
       resp.forEach(function (poll){
         poll.questions.forEach(function(ques) {
           ques.subpopulations.forEach(function (subpop) {
-            if (ques.name.indexOf('Dem')>0 || ques.name.indexOf('Rep') || ques.name.indexOf('Gen')) {
+            if (ques.name.indexOf('Dem')>0 || ques.name.indexOf('Rep') > 0 || ques.name.indexOf('Gen') > 0) {
               var pollInfo = {};
               pollInfo.pollster = poll.pollster;
               pollInfo.endDate = poll.end_date;
@@ -40,7 +39,7 @@ module.exports = {
                 resp.val = response.value;
                 pollInfo.results.push(resp);
               });
-              console.log("pollInf obj ", pollInfo);
+              // console.log("pollInf obj ", pollInfo);
               createPoll(pollInfo);
             } // ends if in any 3 cats
           });
@@ -48,5 +47,15 @@ module.exports = {
       });
     });
     res.json("end of HUFFPO load");
+  },
+  currentHuff: function(req, res, next) {
+    findAllPolls({})
+    .then(function (polls) {
+      res.json(polls);
+  })
+  .fail(function (error) {
+    error.log(error);
+    next(error);
+  });
   }
  };

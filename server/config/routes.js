@@ -15,10 +15,11 @@ module.exports = function (app, express) {
   // app.use('/api/links', helpers.decode);
   app.get('/api/candidates/', candidatesController.allCandidates);
   // app.post('/api/links/', candidatesController.newCandidate);
-  app.get('/api/gethuff', pollsController.getHuffPo);
+  app.get('/api/gethufffromhuff', pollsController.getHuffPo);
 
   app.get('/api/getscores', candidatesController.getScore);
 
+  app.get('/api/dbhuff', pollsController.currentHuff);
 
 
 
