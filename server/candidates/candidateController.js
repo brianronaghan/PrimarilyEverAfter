@@ -9,86 +9,89 @@ var Candidate = require('./CandidateModel.js');
 var findCandidate = Q.nbind(Candidate.findOne, Candidate);
 var createCandidate = Q.nbind(Candidate.create, Candidate);
 var findAllCandidates = Q.nbind(Candidate.find, Candidate);
+var pollster = require('pollster');
 
-var cands = [{name: "Hilary Clinton",
-  party: 'dem',
-  image: '../assets/clinton.jpg',
-  delegateCount: 44,
-  money: 123456789,
-  url: "https://www.hillaryclinton.com/",
-  twitter: 'https://twitter.com/HillaryClinton'
-},
-{name: "Bernie Sanders",
-  party: 'dem',
-  image: '../assets/sanders.jpg',
-  delegateCount: 36,
-  money: 123456789,
-  url: 'http://www.berniesanders.com',
-  twitter: 'http://twitter.com/SenSanders'
-},
-{name: "Donald Trump",
-  party: 'rep',
-  image: '../assets/trump.jpg',
-  delegateCount: 17,
-  money: 123456789,
-  url: 'https://www.donaldjtrump.com/',
-  twitter: 'http://twitter.com/realDonaldTrump'
-},
-{name: "Ted Cruz",
-  party: 'rep',
-  image: '../assets/cruz.jpg',
-  delegateCount: 11,
-  money: 123456789,
-  url: "https://www.tedcruz.org/",
-  twitter: 'http://twitter.com/tedcruz'
-},
-{name: "Marco Rubio",
-  party: 'rep',
-  image: '../assets/rubio.jpg',
-  delegateCount: 10,
-  money: 123456789,
-  url: 'https://marcorubio.com/',
-  twitter: 'http://twitter.com/marcorubio'
-},
-{name: "John Kasich",
-  party: 'rep',
-  image: '../assets/kasich.jpg',
-  delegateCount: 5,
-  money: 123456789,
-  url: 'http://johnkasich.com/',
-  twitter: 'http://twitter.com/JohnKasich'
-},
-{name: "Jeb Bush",
-  party: 'rep',
-  image: '../assets/bush.jpg',
-  delegateCount: 4,
-  money: 123456789,
-  url: 'https://jeb2016.com/?lang=en',
-  twitter: 'http://twitter.com/JebBush'
-},
-{name: "Ben Carson",
-  party: 'rep',
-  image: '../assets/carson.png',
-  delegateCount: 3,
-  money: 123456789,
-  url: 'https://www.bencarson.com/',
-  twitter: 'http://twitter.com/RealBenCarson'
-},
-{name: "Chris Christie",
-  party: 'rep',
-  image: '../assets/christie.jpg',
-  delegateCount: 0,
-  money: 123456789,
-  url: 'https://www.chrischristie.com/',
-  twitter: 'https://twitter.com/ChrisChristie'
-}];
+
+// var cands = [{name: "Hilary Clinton",
+//   party: 'dem',
+//   image: '../assets/clinton.jpg',
+//   delegateCount: 44,
+//   money: 123456789,
+//   url: "https://www.hillaryclinton.com/",
+//   twitter: 'https://twitter.com/HillaryClinton'
+// },
+// {name: "Bernie Sanders",
+//   party: 'dem',
+//   image: '../assets/sanders.jpg',
+//   delegateCount: 36,
+//   money: 123456789,
+//   url: 'http://www.berniesanders.com',
+//   twitter: 'http://twitter.com/SenSanders'
+// },
+// {name: "Donald Trump",
+//   party: 'rep',
+//   image: '../assets/trump.jpg',
+//   delegateCount: 17,
+//   money: 123456789,
+//   url: 'https://www.donaldjtrump.com/',
+//   twitter: 'http://twitter.com/realDonaldTrump'
+// },
+// {name: "Ted Cruz",
+//   party: 'rep',
+//   image: '../assets/cruz.jpg',
+//   delegateCount: 11,
+//   money: 123456789,
+//   url: "https://www.tedcruz.org/",
+//   twitter: 'http://twitter.com/tedcruz'
+// },
+// {name: "Marco Rubio",
+//   party: 'rep',
+//   image: '../assets/rubio.jpg',
+//   delegateCount: 10,
+//   money: 123456789,
+//   url: 'https://marcorubio.com/',
+//   twitter: 'http://twitter.com/marcorubio'
+// },
+// {name: "John Kasich",
+//   party: 'rep',
+//   image: '../assets/kasich.jpg',
+//   delegateCount: 5,
+//   money: 123456789,
+//   url: 'http://johnkasich.com/',
+//   twitter: 'http://twitter.com/JohnKasich'
+// },
+// {name: "Jeb Bush",
+//   party: 'rep',
+//   image: '../assets/bush.jpg',
+//   delegateCount: 4,
+//   money: 123456789,
+//   url: 'https://jeb2016.com/?lang=en',
+//   twitter: 'http://twitter.com/JebBush'
+// },
+// {name: "Ben Carson",
+//   party: 'rep',
+//   image: '../assets/carson.png',
+//   delegateCount: 3,
+//   money: 123456789,
+//   url: 'https://www.bencarson.com/',
+//   twitter: 'http://twitter.com/RealBenCarson'
+// },
+// {name: "Chris Christie",
+//   party: 'rep',
+//   image: '../assets/christie.jpg',
+//   delegateCount: 0,
+//   money: 123456789,
+//   url: 'https://www.chrischristie.com/',
+//   twitter: 'https://twitter.com/ChrisChristie'
+// }];
 
 
 module.exports = {
   addCandidates: function (req, res, next) {
-    for(var x = 0; x < cands.length; x++) {
-      createCandidate(cands[x]);
-    }
+    console.log("whoohoo add cands");
+    // for(var x = 0; x < cands.length; x++) {
+    //   createCandidate(cands[x]);
+    // }
   },
   allCandidates: function (req, res, next) {
     findAllCandidates({})
@@ -102,20 +105,31 @@ module.exports = {
   },
   getScore: function (req, res, next) {
     var theFile = path.join(__dirname, '../files/green');
+    console.log("in get scores server side ", theFile);
       request({
         uri: 'http://www.thegreenpapers.com/P16/'}, function (error, response, body) {
           if(error) {
             console.error("err in request ", error);
           }
           fs.writeFile(theFile, body, function () {
-            console.log("successful write!!! ", body);
+            console.log("oh now i gotta fucking parse this shit? ");
           });
         }
       );
-    }
-  };
+    },
+    getHuffPo: function (req, res, next) {
+      console.log("in huffpo server side ");
+      pollster.polls({topic: '2016-president'}, function(resp){
+        console.log("huffpo data ",resp);
+        res.json(resp);
+      });
+   }
+ };
 
 
+    // },
+    //
+  //
   // newCandidate: function (req, res, next) {
   //   var name = req.body.name;
   //   // if (!util.isValidUrl(url)) {

@@ -7,7 +7,6 @@ angular.module('PEA.services', [])
       url: '/api/candidates'
     })
     .then(function (resp) {
-      console.log("services good get? ", resp);
       return resp;
     });
   };
@@ -32,23 +31,36 @@ angular.module('PEA.services', [])
     });
   };
   var getScores = function () {
-    console.log("hello in get scores?");
-
     return $http({
       method: 'GET',
       url: '/api/getscores'
     })
     .then(function (resp) {
-      console.log("am i here in good get? ", resp);
-      return resp;
+      console.log("good get of scores? ", resp);
+      return resp.data;
+    })
+    .catch(function (err) {
+      console.log("get scores e?", err);
+    });
+  };
+  var gethuff = function () {
+    return $http({
+      method: 'GET',
+      url: '/api/gethuff'
+    })
+    .then(function (resp) {
+      console.log("GET HUFF INFO ", resp);
+      return resp.data;
     })
     .catch(function (err) {
       console.log("what's the real e?", err);
     });
   };
+
   return {
     addto: addto,
-    getScores: getScores
+    getScores: getScores,
+    gethuff:gethuff
   };
 
 })
