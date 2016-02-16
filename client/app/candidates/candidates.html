@@ -18,6 +18,19 @@
         </div>
       </div>
     </div>
+    <div ng-repeat="poll in polls">
+      <div class='poll'>
+        <span>{{poll.party}}</span>
+        <span>{{poll.pollster}}</span>
+        <span>{{poll.ques}}</span>
+        <span>{{poll.endDate}}</span>
+        <span>{{poll.numResponses}}</span>
+          <div ng-repeat="result in poll.results">
+            <span>{{result.choice}} : {{result.val}}</span>
+          </div>
+      </div>
+    </div>
+
 
     <!-- <div class="link" ng-repeat="link in links track by $index"> <a href= "{{link.url}}"> {{link.url}} : {{link.code}} {{link.visits}} </div>
   </div> -->
