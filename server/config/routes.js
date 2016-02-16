@@ -12,7 +12,7 @@ module.exports = function (app, express) {
   // authentication middleware used to decode token and made available on the request
   // app.use('/api/links', helpers.decode);
   app.get('/api/candidates/', candidatesController.allCandidates);
-  // app.post('/api/links/', linksController.newLink);
+  // app.post('/api/links/', candidatesController.newCandidate);
 
   app.get('/*', candidatesController.allCandidates);
 

@@ -1,18 +1,20 @@
 angular.module('PEA.services', [])
 
 .factory('Candidates', function ($http) {
+
    var getAll = function () {
     return $http({
       method: 'GET',
       url: '/api/candidates'
     })
-    .then(function (resp) {
-      return resp.data;
+    .then(function (err, resp) {
+      console.log("am i here in good get? ", resp);
+      // return resp.data;
     });
   };
 
   return {
-    getAll: getAll,
+    getAll: getAll
     // addOne: addOne,
     // navTo: navTo
   };

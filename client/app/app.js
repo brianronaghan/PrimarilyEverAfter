@@ -16,7 +16,7 @@ angular.module('PEA', [
     })
     .when('/candidates', {
       templateUrl: 'app/candidates/candidates.html',
-      controller: 'CandidatesController'
+      controller: 'CliCanController'
     })
     //  .when('/notes', {
     //   templateUrl: 'app/notes/notes.html',
@@ -25,7 +25,7 @@ angular.module('PEA', [
     // })
     .when('/', {
       templateUrl: 'app/candidates/candidates.html',
-      controller: 'CandidatesController'
+      controller: 'CliCanController'
     })
     .when('/signout', {
       templateUrl: 'app/auth/signin.html',

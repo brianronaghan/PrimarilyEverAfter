@@ -8,25 +8,25 @@ var createCandidate = Q.nbind(Candidate.create, Candidate);
 var findAllCandidates = Q.nbind(Candidate.find, Candidate);
 
 module.exports = {
-
   allCandidates: function (req, res, next) {
     findAllCandidates({})
-    .then(function (candidates) {
-      console.log("correct in all candidates get on server");
-      res.json(candidates);
+      .then(function (candidates) {
+        console.log("correct in all candidates get on server");
+        res.json(candidates);
     })
     .fail(function (error) {
+      error.log(error);
       next(error);
     });
   },
 
-  // newLink: function (req, res, next) {
-  //   var url = req.body.url;
-  //   if (!util.isValidUrl(url)) {
-  //     return next(new Error('Not a valid url'));
-  //   }
+  // newCandidate: function (req, res, next) {
+  //   var name = req.body.name;
+  //   // if (!util.isValidUrl(url)) {
+  //   //   return next(new Error('Not a valid url'));
+  //   // }
   //
-  //   findLink({url: url})
+  //   findCandidate({name: name})
   //     .then(function (match) {
   //       if (match) {
   //         res.send(match);
