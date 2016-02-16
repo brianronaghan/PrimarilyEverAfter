@@ -4,9 +4,10 @@ var mongoose = require('mongoose');
 var PollSchema = new mongoose.Schema({
   pollster: String,
   endDate: Date,
-  method: String,
   party: String,
-  polled: Number,
+  ques: String,
+  group: String,
+  numResponses: Number,
   results: Array
 });
 

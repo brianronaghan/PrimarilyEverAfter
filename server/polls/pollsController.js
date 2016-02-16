@@ -15,23 +15,38 @@ module.exports = {
   // get huff should only happen like once a night. JESUS.
   getHuffPo: function (req, res, next) {
     console.log("in huffpo server side ");
-
     pollster.polls({topic: '2016-president-dem-primary'}, function(resp){
-      console.log(resp.length);
       resp.forEach(function (poll){
-        var pollInfo = {};
-        pollInfo.pollster = poll.pollster;
-        pollInfo.endDate = poll.end_date;
         poll.questions.forEach(function(ques) {
-          // if
-          console.log(ques);
+          ques.subpopulations.forEach(function (subpop) {
+            if (ques.name.indexOf('Dem')>0 || ques.name.indexOf('Rep') || ques.name.indexOf('Gen')) {
+              var pollInfo = {};
+              pollInfo.pollster = poll.pollster;
+              pollInfo.endDate = poll.end_date;
+              pollInfo.numResponses = subpop.observations;
+              pollInfo.group = subpop.name;
+              if (ques.name.indexOf('Dem')>0) {
+                pollInfo.party = 'dem';
+              } else if (ques.name.indexOf('Rep')>0) {
+                pollInfo.party = 'rep';
+              } else if(ques.name.indexOf('Gen')>0) {
+                pollInfo.party = 'gen';
+              }
+              pollInfo.ques = ques.name;
+              pollInfo.results =[];
+              subpop.responses.forEach(function (response) {
+                var resp = {};
+                resp.choice = response.choice;
+                resp.val = response.value;
+                pollInfo.results.push(resp);
+              });
+              console.log("pollInf obj ", pollInfo);
+              createPoll(pollInfo);
+            } // ends if in any 3 cats
+          });
         });
-
-
-        // createPoll();
-
-        });
-        res.json(resp);
       });
-   }
+    });
+    res.json("end of HUFFPO load");
+  }
  };
