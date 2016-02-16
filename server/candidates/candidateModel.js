@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 // var crypto = require('crypto');
 
 var CandidateSchema = new mongoose.Schema({
-  name: String,
+  name: {type: String, unique:true, dropDups:true},
   image: String,
   delegateCount: Number,
   link: String,

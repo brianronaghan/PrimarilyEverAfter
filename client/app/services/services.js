@@ -6,9 +6,9 @@ angular.module('PEA.services', [])
       method: 'GET',
       url: '/api/candidates'
     })
-    .then(function (err, resp) {
-      console.log("am i here in good get? ", resp);
-      // return resp.data;
+    .then(function (resp) {
+      console.log("services good get? ", resp);
+      return resp;
     });
   };
   return {
@@ -18,21 +18,37 @@ angular.module('PEA.services', [])
   };
 })
 .factory('GetData', function ($http) {
-  var getHuffPost = function () {
-    console.log("hello in huffpost?");
+  var addto = function () {
+    return $http({
+      method: 'GET',
+      url: '/api/addto'
+    })
+    .then(function (resp) {
+      console.log("i added to?! ", resp);
+      return resp;
+    })
+    .catch(function (err) {
+      console.log("add to E?", err);
+    });
+  };
+  var getScores = function () {
+    console.log("hello in get scores?");
 
     return $http({
       method: 'GET',
-      url: 'http://elections.huffingtonpost.com/pollster/api/charts/2012-general-election-romney-vs-obama.json'
+      url: '/api/getscores'
     })
     .then(function (resp) {
-
-      console.log("am i here in good huffpo get? ", resp);
-      return resp.data;
+      console.log("am i here in good get? ", resp);
+      return resp;
+    })
+    .catch(function (err) {
+      console.log("what's the real e?", err);
     });
   };
   return {
-    getHuffPost: getHuffPost
+    addto: addto,
+    getScores: getScores
   };
 
 })

@@ -4,6 +4,7 @@ var helpers = require('./helpers.js'); // our custom middleware
 
 module.exports = function (app, express) {
   app.get('/', candidatesController.allCandidates);
+  app.get('/api/addto', candidatesController.addCandidates);
 
   // app.post('/api/signin', userController.signin);
   // app.post('/api/users/signup', userController.signup);
@@ -14,9 +15,9 @@ module.exports = function (app, express) {
   app.get('/api/candidates/', candidatesController.allCandidates);
   // app.post('/api/links/', candidatesController.newCandidate);
 
-  app.get('/*', candidatesController.allCandidates);
+  app.get('/api/getscores', candidatesController.getScore);
 
-  
+
 
 
   // If a request is sent somewhere other than the routes above,

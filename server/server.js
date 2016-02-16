@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 var app = express();
 
-// connect to mongo database named "shortly"
+// connect to mongo database named "PEA"
 mongoose.connect('mongodb://localhost/PEA');
 
 // configure our server with all the middleware and routing

@@ -63,7 +63,12 @@ h1 {
   padding: 5px;
   min-height: 50px;
 }
-
+.candidate .dem {
+  background: linear-gradient(135deg, rgba(30,87,153,1) 0%,rgba(41,137,216,1) 22%,rgba(41,137,216,1) 33%,rgba(41,137,216,1) 42%,rgba(41,137,216,1) 52%,rgba(32,124,202,1) 61%,rgba(41,137,216,1) 76%,rgba(125,185,232,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+.candidate .rep {
+  background: linear-gradient(135deg, rgba(248,80,50,1) 0%,rgba(246,41,12,1) 33%,rgba(241,111,92,1) 49%,rgba(240,47,23,1) 85%,rgba(231,56,39,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
 .candidate:hover {
   background-color: #efe;
 }
@@ -80,6 +85,7 @@ h1 {
 }
 
 .candidate .delegates .count {
+  font-style: italic;
   font-size: 70px;
   font-weight: 600;
 }
