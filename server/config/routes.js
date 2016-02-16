@@ -1,6 +1,7 @@
 var candidatesController = require('../candidates/candidateController.js');
 var userController = require('../users/userController.js');
 var helpers = require('./helpers.js'); // our custom middleware
+var pollsController = require('../polls/pollsController.js');
 
 module.exports = function (app, express) {
   app.get('/', candidatesController.allCandidates);
@@ -14,7 +15,7 @@ module.exports = function (app, express) {
   // app.use('/api/links', helpers.decode);
   app.get('/api/candidates/', candidatesController.allCandidates);
   // app.post('/api/links/', candidatesController.newCandidate);
-  app.get('/api/gethuff', candidatesController.getHuffPo);
+  app.get('/api/gethuff', pollsController.getHuffPo);
 
   app.get('/api/getscores', candidatesController.getScore);
 

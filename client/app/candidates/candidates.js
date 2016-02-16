@@ -15,7 +15,7 @@ angular.module('PEA.candidates', [])
   function init () {
     // GetData.addto();
     $scope.getall();
-    $scope.getscores();
+    // $scope.getscores();
     GetData.gethuff();
   }
   $scope.getall = function () {

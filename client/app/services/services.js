@@ -30,19 +30,19 @@ angular.module('PEA.services', [])
       console.log("add to E?", err);
     });
   };
-  var getScores = function () {
-    return $http({
-      method: 'GET',
-      url: '/api/getscores'
-    })
-    .then(function (resp) {
-      console.log("good get of scores? ", resp);
-      return resp.data;
-    })
-    .catch(function (err) {
-      console.log("get scores e?", err);
-    });
-  };
+  // var getScores = function () {
+  //   return $http({
+  //     method: 'GET',
+  //     url: '/api/getscores'
+  //   })
+  //   .then(function (resp) {
+  //     console.log("good get of scores? ", resp);
+  //     return resp.data;
+  //   })
+  //   .catch(function (err) {
+  //     console.log("get scores e?", err);
+  //   });
+  // };
   var gethuff = function () {
     return $http({
       method: 'GET',
@@ -59,7 +59,7 @@ angular.module('PEA.services', [])
 
   return {
     addto: addto,
-    getScores: getScores,
+    // getScores: getScores,
     gethuff:gethuff
   };
 
