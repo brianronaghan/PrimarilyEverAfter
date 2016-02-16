@@ -16,6 +16,8 @@ module.exports = function (app, express) {
 
   app.get('/*', candidatesController.allCandidates);
 
+  
+
 
   // If a request is sent somewhere other than the routes above,
   // send it through our custom error handler

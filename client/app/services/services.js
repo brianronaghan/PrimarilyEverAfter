@@ -1,7 +1,6 @@
 angular.module('PEA.services', [])
 
 .factory('Candidates', function ($http) {
-
    var getAll = function () {
     return $http({
       method: 'GET',
@@ -12,43 +11,31 @@ angular.module('PEA.services', [])
       // return resp.data;
     });
   };
-
   return {
     getAll: getAll
     // addOne: addOne,
     // navTo: navTo
   };
+})
+.factory('GetData', function ($http) {
+  var getHuffPost = function () {
+    console.log("hello in huffpost?");
+
+    return $http({
+      method: 'GET',
+      url: 'http://elections.huffingtonpost.com/pollster/api/charts/2012-general-election-romney-vs-obama.json'
+    })
+    .then(function (resp) {
+
+      console.log("am i here in good huffpo get? ", resp);
+      return resp.data;
+    });
+  };
+  return {
+    getHuffPost: getHuffPost
+  };
 
 })
-
-
-
-// PERHAPS USEFUL FOR LATER when I implement notes?
-
-  //  var addOne = function (newUrl) {
-  //   var obj = JSON.stringify({url: newUrl});
-  //   return $http({
-  //     method: 'POST',
-  //     url: '/api/links',
-  //     data: obj
-  //   })
-  //   .then(function (resp) {
-  //     resp.status = 201;
-  //     return resp.data;
-  //   });
-  // };
-
-  // var navTo = function (link) {
-  //   var theUrl = '/' + link.code;
-  //   return $http({
-  //     method: 'GET',
-  //     url: theUrl
-  //   });
-    // .then(function (resp) {
-    //   console.log("in factory database call ", resp.data);
-    //   return resp.data;
-    // });
-
 
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
@@ -97,3 +84,32 @@ angular.module('PEA.services', [])
     signout: signout
   };
 });
+
+
+
+
+// PERHAPS USEFUL FOR LATER when I implement notes?
+
+  //  var addOne = function (newUrl) {
+  //   var obj = JSON.stringify({url: newUrl});
+  //   return $http({
+  //     method: 'POST',
+  //     url: '/api/links',
+  //     data: obj
+  //   })
+  //   .then(function (resp) {
+  //     resp.status = 201;
+  //     return resp.data;
+  //   });
+  // };
+
+  // var navTo = function (link) {
+  //   var theUrl = '/' + link.code;
+  //   return $http({
+  //     method: 'GET',
+  //     url: theUrl
+  //   });
+    // .then(function (resp) {
+    //   console.log("in factory database call ", resp.data);
+    //   return resp.data;
+    // });

@@ -12,12 +12,15 @@ module.exports = {
     findAllCandidates({})
       .then(function (candidates) {
         console.log("correct in all candidates get on server");
+        console.log(candidates);
         res.json(candidates);
     })
     .fail(function (error) {
       error.log(error);
       next(error);
     });
+
+  
   },
 
   // newCandidate: function (req, res, next) {

@@ -15,7 +15,10 @@ h1 {
   font-style: italic;
   margin-bottom: 10px;
 }
-
+.headshot {
+  width: 200px;
+  height: 200px;
+}
 .navigation {
   width: 100%;
   height: 40px;
@@ -52,4 +55,44 @@ h1 {
 #container {
   clear: both;
   margin-top: 10px;
+}
+
+.candidate {
+  clear: both;
+  margin-bottom: 5px;
+  padding: 5px;
+  min-height: 50px;
+}
+
+.candidate:hover {
+  background-color: #efe;
+}
+
+.candidate img {
+  float: left;
+  margin: 0 5px;
+}
+
+.candidate .delegates {
+  float: right;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+.candidate .delegates .count {
+  font-size: 70px;
+  font-weight: 600;
+}
+
+.candidate .name {
+  font-weight: 600;
+}
+
+.candidate .original {
+  color: #aaa;
+  font-size: 12px;
+}
+
+.candidate .info {
+  margin-left: 55px;
 }

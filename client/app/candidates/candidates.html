@@ -8,10 +8,10 @@
     </form>
     <div ng-repeat="candidate in candidates | orderBy: '-delegateCount' | filter:filteredName">
       <div class='candidate'>
-      <img src='{{candidate.image}}'/>
+        <img class='headshot'src='{{candidate.image}}'/>
         <div class='name'>{{candidate.name}}</div>
-        <div class='delegates'><span class='count'>{{candidate.delegateCount}}</span>Delegates</div>
-        <div class= 'money'><span class 'cash'> {{candidate.money}} </span> Dollars</div>
+        <div class='delegates'><span class='count'>{{candidate.delegateCount}}</span>  Delegates</div>
+        <div class= 'money'><span class 'cash'> {{candidate.money}} </span>   Dollars</div>
         <a href='{{candidate.URL}}'><div class= 'website'>WeBsite!</div></a>
         <a href='{{candidate.twitter}}'><div class='twitter'>{{candidate.twitter}}</div></a>
       </div>
