@@ -64,13 +64,15 @@ h1 {
   min-height: 50px;
 }
 .candidate .dem {
-  background: linear-gradient(135deg, rgba(30,87,153,1) 0%,rgba(41,137,216,1) 22%,rgba(41,137,216,1) 33%,rgba(41,137,216,1) 42%,rgba(41,137,216,1) 52%,rgba(32,124,202,1) 61%,rgba(41,137,216,1) 76%,rgba(125,185,232,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background-image: -webkit-linear-gradient(left, #cfe7fa 0%, #1B3F69 100%);
+
+  /*background-image: -webkit-linear-gradient(right, #a7cfdf 0%, #23538a 100%);*/
+
 }
 .candidate .rep {
-  background: linear-gradient(135deg, rgba(248,80,50,1) 0%,rgba(246,41,12,1) 33%,rgba(241,111,92,1) 49%,rgba(240,47,23,1) 85%,rgba(231,56,39,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-}
-.candidate:hover {
-  background-color: #efe;
+  background-image: -webkit-linear-gradient(left, #ffffff 0%, #FF0000 100%);
+
+  /*background-image: -webkit-linear-gradient(right, #ffffff 0%, #FF0000 100%);*/
 }
 
 .candidate img {
@@ -79,9 +81,13 @@ h1 {
 }
 
 .candidate .delegates {
+  background-image: -webkit-radial-gradient(center, ellipse closest-corner, #000000 0%, #4A4848 80%);
+  color:white;
   float: right;
+  padding:15px;
   margin-right: 10px;
   margin-left: 20px;
+  border-radius: 50%;
 }
 
 .candidate .delegates .count {
@@ -91,6 +97,7 @@ h1 {
 }
 
 .candidate .name {
+  font-size: 20px;
   font-weight: 600;
 }
 

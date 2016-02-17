@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 
 var CandidateSchema = new mongoose.Schema({
   name: {type: String, unique:true, dropDups:true},
+  fullName: String,
   party: String,
   image: String,
   delegateCount: Number,

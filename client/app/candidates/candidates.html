@@ -1,7 +1,6 @@
 <div id='container'>
   <!-- Your html here -->
   <!-- automatically call getlinks? -->
-  <h1> THE CANDIDATES </h1>
   <div ng-app="PEA.candidates" ng-controller="CliCanController">
     <form name="candidateFilter">
       <input type='text'ng-model='filteredName'>
@@ -10,11 +9,17 @@
       <div class='candidate'>
         <div class ='{{candidate.party}}'>
           <img class='headshot'src='{{candidate.image}}'/>
-          <div class='name'>{{candidate.name}}</div>
+          <span class='name'>{{candidate.fullName}}</span>
           <div class='delegates'><span class='count'>{{candidate.delegateCount}}</span>  Delegates</div>
-          <div class= 'money'><span class 'cash'> {{candidate.money}} </span>   Dollars</div>
-          <a href='{{candidate.URL}}'><div class= 'website'>WeBsite!</div></a>
-          <a href='{{candidate.twitter}}'><div class='twitter'>{{candidate.twitter}}</div></a>
+          <span class= 'money'><span class 'cash'> {{candidate.money}} </span>   Dollars</span>
+          <a href='{{candidate.url}}'><span class= 'website'>WeBsite!</span></a>
+          <a href='{{candidate.twitter}}'><span class='twitter'>Twitter feed</span></a>
+            <div class= 'pollinfo'>
+              <span>POLL INFO</span>
+                <div ng-repeat="poll in candidate.polls">
+                  <span>{{poll.name}} : {{poll.score}} PERCENT</span>
+                </div>
+            </div>
         </div>
       </div>
     </div>
@@ -23,7 +28,7 @@
         <span>{{poll.party}}</span>
         <span>{{poll.pollster}}</span>
         <span>{{poll.ques}}</span>
-        <span>{{poll.endDate}}</span>
+        <!-- <span>{{poll.endDate}}</span> -->
         <span>{{poll.numResponses}}</span>
           <div ng-repeat="result in poll.results">
             <span>{{result.choice}} : {{result.val}}</span>
