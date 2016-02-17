@@ -16,7 +16,10 @@
           <a href='{{candidate.twitter}}'><span class='twitter'>Twitter feed</span></a>
             <div class= 'pollinfo'>
               <span>POLL INFO</span>
-                <div ng-repeat="poll in candidate.polls">
+              <form name="pollfilter">
+                <input type='text'ng-model='pollName'>
+              </form>
+                <div ng-repeat="poll in candidate.polls | filter:pollName">
                   <span>{{poll.name}} : {{poll.score}} PERCENT</span>
                 </div>
             </div>
